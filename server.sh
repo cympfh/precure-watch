@@ -13,7 +13,7 @@ run() {
     if [ "_$MEDIA" = "_" ]; then
       echo "http://cympfh.cc/neta/img/CcQjPZvUkAARb64.jpg" # dummy file
     else
-      echo "${MEDIA//^M /}"
+      echo ${MEDIA} | sed 's/^M //g'
     fi
 
   elif ( grep "^GET /tw" /tmp/req >/dev/null ); then
