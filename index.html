@@ -1,0 +1,22 @@
+<html>
+  <head>
+    <title>#precure</title>
+  </head>
+  <body>
+    <center><img style="width:90%" id=I></center>
+    <ul id=U style="list-style:none"></ul>
+  <script>
+var xml = new XMLHttpRequest();
+setInterval(function () {
+
+  xml.open("GET", "media", false);
+  xml.send();
+  I.src = xml.responseText;
+  xml.open("GET", "tw", false);
+  xml.send();
+  U.innerHTML = xml.responseText.split("\n").map(line => `<li>${line}</li>`).join("");
+
+}, 100);
+  </script>
+  </body>
+</html>
