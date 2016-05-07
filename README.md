@@ -3,7 +3,7 @@
 
 - (ba)sh
 - twurl
-- jq
+- jq (1.5+)
 - web browser
 
 # usage
