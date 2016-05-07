@@ -1,22 +1,60 @@
 <html>
   <head>
     <title>#precure</title>
+    <style>
+
+center {
+  width: 48%;
+  float: left;
+}
+center > img {
+  width: 100%;
+}
+ul {
+  width: 48%;
+  float: right;
+  list-style: none;
+  font-family: aquafont YukarryAA;
+}
+li {
+  margin: 0;
+  padding: 3px;
+  border-radius: 4px;
+}
+li:nth-child(2n+0) { background-color: #fff3f3; }
+li:nth-child(2n+1) { background-color: #f3fff3; }
+a {
+  font-family: monospace;
+  color: #447;
+  font-weight: bold;
+}
+
+    </style>
   </head>
   <body>
-    <center><img style="width:90%" id=I></center>
-    <ul id=U style="list-style:none"></ul>
+    <center><img id=I></center>
+    <ul id=U></ul>
   <script>
+
 var xml = new XMLHttpRequest();
 setInterval(function () {
-
   xml.open("GET", "media", false);
   xml.send();
   I.src = xml.responseText;
   xml.open("GET", "tw", false);
   xml.send();
-  U.innerHTML = xml.responseText.split("\n").map(line => `<li>${line}</li>`).join("");
+  U.innerHTML =
+    xml.responseText.split("\n")
+    .map(line => `<li>${line}</li>`)
+    .join("")
+    .replace(/#precure/g, '')
+    .replace(/@[0-9A-Za-z_]+/g,
+        id => `<a href=http://twitter.com/${id.slice(1)}>${id}</a>`)
+    .replace(/http[0-9A-Za-z_\/\:\.\,]+/g,
+        url => `<a href=${url}>${url}</a>`)
+    ;
+}, 1000);
 
-}, 100);
   </script>
   </body>
 </html>

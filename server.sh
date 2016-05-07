@@ -1,6 +1,6 @@
 #!/bin/bash
 
-PORT=8080
+PORT=${1:-8080}
 
 rm -f /tmp/f; mkfifo /tmp/f
 trap "rm -f /tmp/f; exit" INT
