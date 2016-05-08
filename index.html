@@ -1,6 +1,6 @@
 <html>
   <head>
-    <title>#precure</title>
+    <title>twitter tracking system</title>
     <style>
 
 center {
@@ -51,7 +51,6 @@ setInterval(function () {
     xml.responseText.split("\n")
     .map(line => `<li>${line}</li>`)
     .join("")
-    .replace(/#precure/g, '')
     .replace(/@[0-9A-Za-z_]+/g,
         id => `<a href=http://twitter.com/${id.slice(1)}>${id}</a>`)
     .replace(/http[0-9A-Za-z_\/\:\.\,]+/g,
