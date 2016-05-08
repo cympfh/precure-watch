@@ -18,7 +18,7 @@ run() {
 
   elif ( grep "^GET /tw" /tmp/req >/dev/null ); then
 
-    </tmp/tw grep "^T" | grep -v "RT" | tail -n 20 | sed 's/^T //g'
+    </tmp/tw grep "^T" | tail -n 20 | sed 's/^T //g'
 
   else
 
