@@ -37,10 +37,14 @@ a {
   <script>
 
 var xml = new XMLHttpRequest();
+
 setInterval(function () {
   xml.open("GET", "media", false);
   xml.send();
   I.src = xml.responseText;
+}, 1000);
+
+setInterval(function () {
   xml.open("GET", "tw", false);
   xml.send();
   U.innerHTML =
@@ -53,7 +57,7 @@ setInterval(function () {
     .replace(/http[0-9A-Za-z_\/\:\.\,]+/g,
         url => `<a href=${url}>${url}</a>`)
     ;
-}, 1000);
+}, 200);
 
   </script>
   </body>
