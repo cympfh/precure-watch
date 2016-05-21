@@ -48,7 +48,7 @@ setInterval(function () {
   xml.open("GET", "media", false);
   xml.send();
   I.src = xml.responseText;
-}, 1000);
+}, 2000);
 
 setInterval(function () {
   xml.open("GET", "tw", false);
@@ -63,7 +63,7 @@ setInterval(function () {
     .replace(/http[0-9A-Za-z_\/\:\.\,]+/g,
         url => `<a href=${url}>${url}</a>`)
     ;
-}, 200);
+}, 800);
 
   </script>
   </body>
