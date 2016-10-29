@@ -1,27 +1,28 @@
+# what is this
 
-# requirement
+jikkyo hakadoru tool
+
+![](https://pbs.twimg.com/media/Cv8Hz2lUkAA5i-U.jpg:large)
+
+## requirement
 
 - (ba)sh
 - twurl
 - jq (1.5+)
 - web browser
 
-# usage
+## usage
 
 ```bash
-$ ./run.sh
+$ ./run.sh -t "#precure" -p 8080 -n 20
 ```
 
-then open `http://127.0.0.1:8000`
+then open `http://127.0.0.1:8080`.
 
-# options
 
-Track word ("#precure") and port number can be specified.
-
-```bash
-$ ./run.sh -t "#よく呟く人名に声優2人以上で声豚認" -p 7777
+```
+-t    track word (search query)
+-p    port number (default: 8080)
+-n    the num of tweet (old tweets be deleted)
 ```
 
-then open `http://127.0.0.1:7777
-
-以上.
