@@ -1,6 +1,7 @@
 #!/bin/bash
 
 PORT=${1:-8080}
+N=${2:-20}
 
 rm -f /tmp/f; mkfifo /tmp/f
 trap "rm -f /tmp/f; exit" INT
@@ -18,7 +19,7 @@ run() {
 
   elif ( grep "^GET /tw" /tmp/req >/dev/null ); then
 
-    </tmp/tw grep "^T" | grep -v "RT" | tail -n 20 | sed 's/^T //g'
+    </tmp/tw grep "^T" | grep -v "RT" | tail -n "$N" | sed 's/^T //g'
 
   else
 
