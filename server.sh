@@ -29,7 +29,7 @@ run() {
   fi
 }
 
-echo running on http://127.0.0.1:$PORT/
+echo "running on http://127.0.0.1:$PORT/"
 while :; do
   cat /tmp/f | run | nc -l 127.0.0.1 $PORT > /tmp/f
 done
