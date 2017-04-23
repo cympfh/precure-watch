@@ -1,6 +1,6 @@
-# what is this
+# precure watch
 
-jikkyo hakadoru tool
+Twitter 実況捗るツール
 
 ![](https://pbs.twimg.com/media/Cv8Hz2lUkAA5i-U.jpg:large)
 
