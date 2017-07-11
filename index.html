@@ -1,70 +1,69 @@
 <html>
   <head>
     <title>twitter tracking system</title>
-    <style>
-
-center {
-  width: 48%;
-  position: absolute;
-  left: 6px;
-  top: 6px;
+<style>
+img {
+    max-width: 100%;
 }
-center > img {
-  width: 100%;
+.message-body {
+    font-family: aquafont;
+    background-color: #f0f0f0;
 }
-ul {
-  width: 48%;
-  position: absolute;
-  right: 6px;
-  top: 6px;
-  margin: 0;
-  padding: 0;
-  list-style: none;
+.message-body:nth-child(2n) {
+    background-color: #fafafa;
 }
-li {
-  margin: 0;
-  padding: 3px;
-  border-radius: 4px;
-  font-size: 24px;
-  font-family: aquafont;
+div.column.is-half {
+    width: 49% !important;
+    float: left !important;
 }
-li:nth-child(2n+0) { background-color: #fff3f3; }
-li:nth-child(2n+1) { background-color: #f3fff3; }
-a {
-  font-family: monospace;
-  color: #447;
-  font-weight: bold;
-}
-
-    </style>
+</style>
   </head>
   <body>
-    <center><img id=I></center>
-    <ul id=U></ul>
-  <script>
 
+      <div class="columns">
+          <div class="column is-half">
+              <div class="" id="photo-screen"></div>
+          </div>
+          <div class="column is-half">
+              <div class="" id="comment-list"></div>
+          </div>
+      </div>
+
+<script>
 var xml = new XMLHttpRequest();
+var PS, CL;
+var interval_photo_screen = 3200;
+var interval_comment_list = 800;
 
 setInterval(function () {
   xml.open("GET", "media", false);
   xml.send();
-  I.src = xml.responseText;
-}, 2000);
+
+  if (!PS) { PS = document.getElementById('photo-screen'); }
+  // PS.innerHTML = '';
+  PS.innerHTML =
+    xml.responseText.split("\n")
+    .map(line => `<figure class="image"><img src="${line}" /></figure>`)
+    .join('')
+}, interval_photo_screen);
 
 setInterval(function () {
   xml.open("GET", "tw", false);
   xml.send();
-  U.innerHTML =
+
+  if (!CL) { CL = document.getElementById('comment-list'); }
+  // CL.innerHTML = '';
+  CL.innerHTML =
     xml.responseText.split("\n")
-    .map(line => `<li>${line}</li>`)
-    .join("")
+    .map(line => `<div class="message-body">${line}</div>`)
+    .join('')
     .replace(/@[0-9A-Za-z_]+/g,
         id => `<a href=http://twitter.com/${id.slice(1)}>${id}</a>`)
     .replace(/http[0-9A-Za-z_\/\:\.\,]+/g,
         url => `<a href=${url}>${url}</a>`)
     ;
-}, 800);
+}, interval_comment_list);
 
-  </script>
-  </body>
+</script>
+</body>
 </html>
